@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Unary
+  rpc Greet (GreetRequest) returns (GreetReply);
+
+  //Server Streaming
+  rpc GreetServerStreaming(GreetRequest) returns (stream GreetReply);
+
+  //Client Streaming
+  rpc GreetClientStreaming(stream GreetRequest) returns (GreetReply);
+
+  //BiDi 
+  rpc GreetBiDi(stream GreetRequest) returns (stream GreetReply);
+}
+
+message Greeting {
+	string first_name = 1;
+	string last_name = 2;
+}
+
+// The request message containing the user's name.
+message GreetRequest {
+  Greeting greeting = 1;
+}
+
+// The response message containing the greetings.
+message GreetReply {
+  string result = 1;
+}
