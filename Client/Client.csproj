@@ -16,10 +16,10 @@
 		</PackageReference>
 	</ItemGroup>
   <ItemGroup>
-    <Folder Include="ProtoBuff\" />
+    <Folder Include="protobuf\" />
   </ItemGroup>
 	<ItemGroup>
-		<Protobuf Include="../*.proto" GrpcServices="Client" OutputDir="%(RelativePath)ProtoBuff/" />
+		<Protobuf Include="../*.proto" GrpcServices="Client" OutputDir="%(RelativePath)protobuf/" />
 	</ItemGroup>
 
 </Project>

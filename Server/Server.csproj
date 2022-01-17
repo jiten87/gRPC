@@ -15,10 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ProtoBuff\" />
+    <Folder Include="protobuf\" />
   </ItemGroup>
 	<ItemGroup>
-		<Protobuf Include="../*.proto" GrpcServices="Server" OutputDir="%(RelativePath)ProtoBuff/" />
+		<Protobuf Include="../*.proto" GrpcServices="Server" OutputDir="%(RelativePath)protobuf/" />
 	</ItemGroup>
 
 </Project>
