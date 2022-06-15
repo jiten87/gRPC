@@ -18,6 +18,12 @@ namespace Server.Services
             return Task.FromResult(new GreetReply() {Result = result}) ;
         }
 
+        public override Task<ReplyCreateKey> CreateKey(RequestCreateKey requestCreateKey, ServerCallContext context)
+        {
+
+            return Task.FromResult(new ReplyCreateKey() { Response = $"{requestCreateKey.Name} with label:  {requestCreateKey.Label} Key Created! and label1: {requestCreateKey.Label1}" });
+        }
+
         public override async Task<GreetReply> GreetClientStreaming(IAsyncStreamReader<GreetRequest> requestStream, ServerCallContext context)
         {
             string result = string.Empty;

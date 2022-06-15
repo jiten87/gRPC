@@ -52,6 +52,10 @@ namespace Greet {
     static readonly grpc::Marshaller<global::Greet.GreetRequest> __Marshaller_greet_GreetRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Greet.GreetRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Greet.GreetReply> __Marshaller_greet_GreetReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Greet.GreetReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Greet.RequestCreateKey> __Marshaller_greet_RequestCreateKey = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Greet.RequestCreateKey.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Greet.ReplyCreateKey> __Marshaller_greet_ReplyCreateKey = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Greet.ReplyCreateKey.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Greet.GreetRequest, global::Greet.GreetReply> __Method_Greet = new grpc::Method<global::Greet.GreetRequest, global::Greet.GreetReply>(
@@ -60,6 +64,14 @@ namespace Greet {
         "Greet",
         __Marshaller_greet_GreetRequest,
         __Marshaller_greet_GreetReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Greet.RequestCreateKey, global::Greet.ReplyCreateKey> __Method_CreateKey = new grpc::Method<global::Greet.RequestCreateKey, global::Greet.ReplyCreateKey>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CreateKey",
+        __Marshaller_greet_RequestCreateKey,
+        __Marshaller_greet_ReplyCreateKey);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Greet.GreetRequest, global::Greet.GreetReply> __Method_GreetServerStreaming = new grpc::Method<global::Greet.GreetRequest, global::Greet.GreetReply>(
@@ -165,6 +177,26 @@ namespace Greet {
       public virtual grpc::AsyncUnaryCall<global::Greet.GreetReply> GreetAsync(global::Greet.GreetRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_Greet, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Greet.ReplyCreateKey CreateKey(global::Greet.RequestCreateKey request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateKey(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Greet.ReplyCreateKey CreateKey(global::Greet.RequestCreateKey request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CreateKey, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Greet.ReplyCreateKey> CreateKeyAsync(global::Greet.RequestCreateKey request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateKeyAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Greet.ReplyCreateKey> CreateKeyAsync(global::Greet.RequestCreateKey request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CreateKey, null, options, request);
       }
       /// <summary>
       ///Server Streaming

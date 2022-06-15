@@ -52,6 +52,10 @@ namespace Greet {
     static readonly grpc::Marshaller<global::Greet.GreetRequest> __Marshaller_greet_GreetRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Greet.GreetRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Greet.GreetReply> __Marshaller_greet_GreetReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Greet.GreetReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Greet.RequestCreateKey> __Marshaller_greet_RequestCreateKey = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Greet.RequestCreateKey.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Greet.ReplyCreateKey> __Marshaller_greet_ReplyCreateKey = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Greet.ReplyCreateKey.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Greet.GreetRequest, global::Greet.GreetReply> __Method_Greet = new grpc::Method<global::Greet.GreetRequest, global::Greet.GreetReply>(
@@ -60,6 +64,14 @@ namespace Greet {
         "Greet",
         __Marshaller_greet_GreetRequest,
         __Marshaller_greet_GreetReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Greet.RequestCreateKey, global::Greet.ReplyCreateKey> __Method_CreateKey = new grpc::Method<global::Greet.RequestCreateKey, global::Greet.ReplyCreateKey>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CreateKey",
+        __Marshaller_greet_RequestCreateKey,
+        __Marshaller_greet_ReplyCreateKey);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Greet.GreetRequest, global::Greet.GreetReply> __Method_GreetServerStreaming = new grpc::Method<global::Greet.GreetRequest, global::Greet.GreetReply>(
@@ -103,6 +115,12 @@ namespace Greet {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Greet.GreetReply> Greet(global::Greet.GreetRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Greet.ReplyCreateKey> CreateKey(global::Greet.RequestCreateKey request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -154,6 +172,7 @@ namespace Greet {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Greet, serviceImpl.Greet)
+          .AddMethod(__Method_CreateKey, serviceImpl.CreateKey)
           .AddMethod(__Method_GreetServerStreaming, serviceImpl.GreetServerStreaming)
           .AddMethod(__Method_GreetClientStreaming, serviceImpl.GreetClientStreaming)
           .AddMethod(__Method_GreetBiDi, serviceImpl.GreetBiDi).Build();
@@ -167,6 +186,7 @@ namespace Greet {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, GreeterBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_Greet, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Greet.GreetRequest, global::Greet.GreetReply>(serviceImpl.Greet));
+      serviceBinder.AddMethod(__Method_CreateKey, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Greet.RequestCreateKey, global::Greet.ReplyCreateKey>(serviceImpl.CreateKey));
       serviceBinder.AddMethod(__Method_GreetServerStreaming, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Greet.GreetRequest, global::Greet.GreetReply>(serviceImpl.GreetServerStreaming));
       serviceBinder.AddMethod(__Method_GreetClientStreaming, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::Greet.GreetRequest, global::Greet.GreetReply>(serviceImpl.GreetClientStreaming));
       serviceBinder.AddMethod(__Method_GreetBiDi, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Greet.GreetRequest, global::Greet.GreetReply>(serviceImpl.GreetBiDi));

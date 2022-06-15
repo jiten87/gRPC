@@ -8,6 +8,7 @@ package greet;
 service Greeter {
   // Unary
   rpc Greet (GreetRequest) returns (GreetReply);
+  rpc CreateKey(RequestCreateKey) returns (ReplyCreateKey);
 
   //Server Streaming
   rpc GreetServerStreaming(GreetRequest) returns (stream GreetReply);
@@ -22,6 +23,38 @@ service Greeter {
 message Greeting {
 	string first_name = 1;
 	string last_name = 2;
+}
+
+message RequestCreateKey
+{
+	//add code here to gen key.
+	string name = 1;
+	int32  usage_mask = 2;
+	string algorithm = 3;
+
+	message meta {
+		string owner_id = 1;
+	}
+
+	repeated meta meta_info = 4;
+	string state = 5;
+	string deactivationDate = 6;
+	string protectStopDate = 7;
+	message aliases{
+		string alias = 1;
+		string type = 2;
+	}
+	repeated aliases aliases_info = 8;	
+	string label = 9;
+	string label1 = 10;
+	
+
+	
+}
+
+message ReplyCreateKey
+{
+	string response = 1;
 }
 
 // The request message containing the user's name.

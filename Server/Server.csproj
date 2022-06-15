@@ -20,5 +20,8 @@
 	<ItemGroup>
 		<Protobuf Include="../*.proto" GrpcServices="Server" OutputDir="%(RelativePath)protobuf/" />
 	</ItemGroup>
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	  <Exec Command="C:\Users\10060341\AppData\Local\Programs\Python\Python310\python -m grpc_tools.protoc -I../ --python_out=../PyhtonClient --grpc_python_out=../PyhtonClient ../greet.proto" />
+	</Target>
 
 </Project>

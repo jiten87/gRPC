@@ -1,24 +1,58 @@
 ﻿using Greet;
 using Grpc.Core;
 using Grpc.Net.Client;
+using Newtonsoft.Json;
+using System.Diagnostics;
 
-namespace Client
+namespace CSharpClient
 {
     class program
     {
         static async Task Main(string[] args)
         {
+            var httpHandler = new HttpClientHandler();
+            // Return `true` to allow certificates that are untrusted/invalid
+            httpHandler.ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
             // The port number must match the port of the gRPC server.
-            var channel = GrpcChannel.ForAddress("https://localhost:7206");
+            //var channel = GrpcChannel.ForAddress("http://10.164.11.179:5005");
+            var channel = GrpcChannel.ForAddress("http://localhost:5005");
+            //var channel = GrpcChannel.ForAddress("https://10.164.11.179:7005", new GrpcChannelOptions { HttpHandler = httpHandler });
+            //var channel = GrpcChannel.ForAddress("http://10.164.115.52:5000");
+            //var channel = GrpcChannel.ForAddress("https://localhost:7005", new GrpcChannelOptions { HttpHandler = httpHandler });
             var client = new Greeter.GreeterClient(channel);
+            //Stopwatch sw;
+            //sw = Stopwatch.StartNew();  
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    CreateKeyDemo(client);
+            //}
+            //sw.Stop();
+            //long totalTimeTaken = sw.ElapsedMilliseconds;
+            //Console.WriteLine($"Total time taken {totalTimeTaken.ToString()}");
 
+            CreateKeyDemo(client);
             //DoSimpleGreet(client);
             //await DOGreetClientStreaming(client);
             //await DoGreetServerStreaming(client);
-            await DoGreetBiDi(client);
+            //await DoGreetBiDi(client);
 
             channel.ShutdownAsync().Wait();
-            Console.ReadKey();
+            Console.ReadLine();
+        }
+
+        public static void CreateKeyDemo(Greeter.GreeterClient client)
+        {
+            string data = string.Empty;
+            using (StreamReader sr = new StreamReader("KeyGenJsonEx.json"))
+            {
+                data = sr.ReadToEnd();
+
+            }
+            var writeKeyGen = JsonConvert.DeserializeObject<RequestCreateKey>(data);
+
+            var response = client.CreateKey(writeKeyGen);
+            Console.WriteLine(response.Response);
         }
 
         public static void DoSimpleGreet(Greeter.GreeterClient client)

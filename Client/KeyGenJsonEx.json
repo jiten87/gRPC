@@ -1,0 +1,23 @@
+﻿{
+  "name": "My Encryption Key",
+  "usageMask": 12,
+  "algorithm": "aes",
+  "meta": {
+    "ownerId": "local|1a45d..."
+  },
+  "state": "Pre-Active",
+  "deactivationDate": "2018-10-02T14:24:37.436073Z",
+  "protectStopDate": "2018-10-02T14:24:37.436073Z",
+  "aliases": [
+    {
+      "alias": "altname1",
+      "type": "string"
+    },
+    {
+      "alias": "altname2:keysecure:gemalto:com",
+      "type": "uri"
+    }
+  ],
+  "label": ".netcore connector",
+  "label1": "jiten"
+}
